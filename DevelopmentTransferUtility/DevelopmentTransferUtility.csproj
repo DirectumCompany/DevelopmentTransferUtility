@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4420EBD0-53BF-4AFD-A596-3EC3DA0592EE}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NpoComputer.DevelopmentTransferUtility</RootNamespace>
+    <AssemblyName>DevelopmentTransferUtility</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommandLine">
+      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Core">
+      <HintPath>..\packages\Common.Logging.Core.3.4.1\lib\net40\Common.Logging.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.NLog41">
+      <HintPath>..\packages\Common.Logging.NLog41.3.4.1\lib\net40\Common.Logging.NLog41.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Client">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Microsoft.TeamFoundation.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Common">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Microsoft.TeamFoundation.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.VersionControl.Client">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Microsoft.TeamFoundation.VersionControl.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.VersionControl.Common">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Microsoft.TeamFoundation.VersionControl.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Services.Client">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Microsoft.VisualStudio.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Services.Common">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Microsoft.VisualStudio.Services.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Services.WebApi">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Microsoft.VisualStudio.Services.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\CommandLineOptions.cs" />
+    <Compile Include="Common\ConnectionParams.cs" />
+    <Compile Include="Common\ConnectionManager.cs" />
+    <Compile Include="Common\DeleteProcessor.cs" />
+    <Compile Include="Common\ImportFilter.cs" />
+    <Compile Include="Common\TransferDevelopmentRunner.cs" />
+    <Compile Include="Common\EventTextParser.cs" />
+    <Compile Include="Common\EventType.cs" />
+    <Compile Include="Common\TransferRecordsRunner.cs" />
+    <Compile Include="Common\DevelopmentTransformer.cs" />
+    <Compile Include="Common\EntryPoint.cs" />
+    <Compile Include="Common\ICommandLineOptions.cs" />
+    <Compile Include="Common\TransformerEnvironment.cs" />
+    <Compile Include="Common\Utils.cs" />
+    <Compile Include="Handlers\BasePackageHandler.cs" />
+    <Compile Include="Handlers\BaseRecordHandler.cs" />
+    <Compile Include="Handlers\EventTypeFileNames.cs" />
+    <Compile Include="Handlers\IPackageHandler.cs" />
+    <Compile Include="Handlers\IRecordHandler.cs" />
+    <Compile Include="Handlers\Package\IntegratedReportHandler.cs" />
+    <Compile Include="Handlers\Package\LocalizationStringHandler.cs" />
+    <Compile Include="Handlers\Package\DialogHandler.cs" />
+    <Compile Include="Handlers\Package\DocumentCardTypeHandler.cs" />
+    <Compile Include="Handlers\Package\ReferenceTypeHandler.cs" />
+    <Compile Include="Handlers\Package\BaseReportHandler.cs" />
+    <Compile Include="Handlers\Package\ReportHandler.cs" />
+    <Compile Include="Handlers\Package\ScriptHandler.cs" />
+    <Compile Include="Handlers\Package\ReferenceRequisiteHandler.cs" />
+    <Compile Include="Handlers\Package\DocumentRequisiteHandler.cs" />
+    <Compile Include="Handlers\Package\FunctionGroupHandler.cs" />
+    <Compile Include="Handlers\Package\DialogRequisiteHandler.cs" />
+    <Compile Include="Handlers\Package\RouteBlockGroupHandler.cs" />
+    <Compile Include="Handlers\Package\ServerEventHandler.cs" />
+    <Compile Include="Handlers\Package\ViewerHandler.cs" />
+    <Compile Include="Handlers\Package\ModuleHandler.cs" />
+    <Compile Include="Handlers\Package\ConstantHandler.cs" />
+    <Compile Include="Handlers\Package\FunctionHandler.cs" />
+    <Compile Include="Handlers\Package\RouteBlockHandler.cs" />
+    <Compile Include="Handlers\Records\RouteGroupHandler.cs" />
+    <Compile Include="Handlers\Records\RouteRecordHandler.cs" />
+    <Compile Include="Handlers\Records\RouteRoleHandler.cs" />
+    <Compile Include="Handlers\Records\WizardGroupHandler.cs" />
+    <Compile Include="Handlers\Records\WizardRecordHandler.cs" />
+    <Compile Include="Localization.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Localization.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Base\ComponentModel.cs" />
+    <Compile Include="Models\Base\PackageInfoModel.cs" />
+    <Compile Include="Models\Base\RequisiteModel.cs" />
+    <Compile Include="Models\Base\ComponentsModel.cs" />
+    <Compile Include="Models\Base\DataSetModel.cs" />
+    <Compile Include="Models\Base\DataSetsModel.cs" />
+    <Compile Include="Models\Base\RowModel.cs" />
+    <Compile Include="Models\ExportModels\LocalizationStringsExportModel.cs" />
+    <Compile Include="Models\Records\RecordRefModel.cs" />
+    <Compile Include="Models\Records\RequisiteModel.cs" />
+    <Compile Include="Models\Records\RootModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\SpacelessClosingTagXmlWriter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Localization.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\export.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\export_my_recent.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\export_recent.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\export_from_package.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\import.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\import_changeset.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\import_component.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\import_into_package.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\import_my_recent.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\import_recent.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\routes_export_my_recent.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\routes_export_recent.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\routes_import.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\routes_import_changeset.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\routes_import_component.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\routes_import_into_package.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\routes_import_my_recent.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\routes_import_recent.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\wizards_export_my_recent.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\wizards_export_recent.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\wizards_import.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\wizards_import_changeset.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\wizards_import_component.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\wizards_import_into_package.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\wizards_import_my_recent.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\wizards_import_recent.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <MoveToLibFolder Include="$(OutputPath)*.dll ; $(OutputPath)*.pdb ; $(OutputPath)*.xml" />
+    </ItemGroup>
+    <Move SourceFiles="@(MoveToLibFolder)" DestinationFolder="$(OutputPath)lib" OverwriteReadOnlyFiles="true" />
+  </Target>
+  <Target Name="SpicNSpan" AfterTargets="Clean">
+    <!-- По-простому скипаем ошибку удаления *.vshost.exe -->
+    <RemoveDir Directories="$(TargetDir)" ContinueOnError="True" />
+    <RemoveDir Directories="$(SolutionDir).vs" />
+    <RemoveDir Directories="$(ProjectDir)$(BaseIntermediateOutputPath)" />
+  </Target>
+</Project>

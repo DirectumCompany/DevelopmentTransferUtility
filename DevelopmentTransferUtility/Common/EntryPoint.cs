@@ -243,7 +243,16 @@ namespace NpoComputer.DevelopmentTransferUtility.Common
         if (NeedExportDevelopment(options))
           ExportDevelopment(options, developmentFileName);
 
-        TransformPackageToFolder(options, developmentFileName);
+       TransformPackageToFolder(options, developmentFileName);
+
+         if(options.convertToUTF8)
+                {
+                    Console.Write("Конвертация в UTF-8.. ");
+                    filestoutf8.convert(options.DevelopmentFolderName);
+                    Console.Write("Done");
+                    Console.WriteLine();
+                }
+            
       }
       finally
       {
@@ -280,10 +289,13 @@ namespace NpoComputer.DevelopmentTransferUtility.Common
     /// <param name="args">Параметры командной строки.</param>
     public static void Main(string[] args)
     {
-      bool needCloseApplicationWindow = false;
+
+            bool needCloseApplicationWindow = false;
+
       try
       {
         var options = new CommandLineOptions();
+
         if (Parser.Default.ParseArguments(args, options))
         {
           needCloseApplicationWindow = options.CloseWindow;

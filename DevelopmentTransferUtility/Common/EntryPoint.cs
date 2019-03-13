@@ -233,10 +233,13 @@ namespace NpoComputer.DevelopmentTransferUtility.Common
     /// Обработать экспорт.
     /// </summary>
     /// <param name="options">Ключи командной строки.</param>
-    private static void ProcessExport(ICommandLineOptions options)
+    private static void ProcessExport(ICommandLineOptions options, string processType="")
     {
       string tempFolder; 
       string developmentFileName = GetDevelopmentFileName(options, out tempFolder);
+      
+      if (!string.IsNullOrEmpty(processType))
+        options.Type = processType;
 
       try
       {
@@ -245,14 +248,6 @@ namespace NpoComputer.DevelopmentTransferUtility.Common
 
        TransformPackageToFolder(options, developmentFileName);
 
-         if(options.convertToUTF8)
-                {
-                    Console.Write("Конвертация в UTF-8.. ");
-                    filestoutf8.convert(options.DevelopmentFolderName);
-                    Console.Write("Done");
-                    Console.WriteLine();
-                }
-            
       }
       finally
       {
@@ -303,7 +298,24 @@ namespace NpoComputer.DevelopmentTransferUtility.Common
           {
             default:
             case "export":
-              ProcessExport(options);
+              if (options.Type == "all")
+              {
+                ProcessExport(options, "standard");
+                ProcessExport(options, "routes");
+                ProcessExport(options, "wizards");
+               }
+              
+              else
+                ProcessExport(options);
+              
+              if (options.convertToUTF8)
+              {
+                 Console.Write("Конвертация в UTF-8.. ");
+                 filestoutf8.convert(options.DevelopmentFolderName);
+                 Console.Write("Done");
+                 Console.WriteLine();
+              }
+              
               break;
             case "import":
               ProcessImport(options);

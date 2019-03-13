@@ -96,6 +96,7 @@
     <Compile Include="Common\ConnectionParams.cs" />
     <Compile Include="Common\ConnectionManager.cs" />
     <Compile Include="Common\DeleteProcessor.cs" />
+    <Compile Include="Common\FilesToUtf8.cs" />
     <Compile Include="Common\ImportFilter.cs" />
     <Compile Include="Common\TransferDevelopmentRunner.cs" />
     <Compile Include="Common\EventTextParser.cs" />

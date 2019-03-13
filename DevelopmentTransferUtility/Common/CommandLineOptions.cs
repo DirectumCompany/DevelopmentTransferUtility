@@ -156,6 +156,9 @@ namespace NpoComputer.DevelopmentTransferUtility.Common
     [Option("skipautoadded", Required = false, DefaultValue = false)]
     public bool SkipAutoAddedElements { get; set; }
 
+    [Option("utf8", Required =false,DefaultValue =false)]
+    public bool convertToUTF8 { get; set; }
+
     #endregion
 
     /// <summary>
@@ -189,7 +192,8 @@ namespace NpoComputer.DevelopmentTransferUtility.Common
         " --hiddenimport   - Признак импорта в скрытом режиме (без показа окна утилиты импорта).\n" +
         " --importfolders  - Список импортируемых папок (используется как фильтр при импорте).\n" +
         " --skipautoadded  - Игнорировать автоматически выбранные элементы (используется только при экспорте).\n" +
-        " --help           - Вывести справку по параметрам командной строки.\n";
+        " --utf8           - Конвертировать файлы в UTF-8.\n" +
+        " --help           - Вывести справку по параметрам командной строки.\n"; 
     }
   }
 }

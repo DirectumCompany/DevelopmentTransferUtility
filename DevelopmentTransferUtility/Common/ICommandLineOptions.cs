@@ -114,5 +114,10 @@
     /// Не экспортировать автоматически выбранные элементы.
     /// </summary>
     bool SkipAutoAddedElements { get; set; }
+
+    /// <summary>
+    /// Конвертировать файлы в UTF-8
+    /// </summary>
+    bool convertToUTF8 { get; set; }
   }
 }

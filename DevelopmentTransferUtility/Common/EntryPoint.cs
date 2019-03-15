@@ -266,6 +266,14 @@ namespace NpoComputer.DevelopmentTransferUtility.Common
       string developmentFileName = GetDevelopmentFileName(options, out tempFolder);
       try
       {
+        if( options.convertToUTF8)
+        {
+          Console.Write("Конвертация в 1251..");
+          Options.DevelopmentFolderName = filestoutf8.import(options.DevelopmentFolderName);
+          Console.Write("Done");
+          Console.WriteLine();
+        }
+        
         TransformFolderToPackage(options, developmentFileName);
 
         if (NeedImportDevelopment(options))
@@ -275,6 +283,9 @@ namespace NpoComputer.DevelopmentTransferUtility.Common
       {
         if (NeedImportDevelopment(options))
           Directory.Delete(tempFolder, true);
+        
+        if (options.convertToUTF8)
+           Directory.Delete(options.DevelopmentFolderName, true);
       }
     }
 
@@ -311,7 +322,7 @@ namespace NpoComputer.DevelopmentTransferUtility.Common
               if (options.convertToUTF8)
               {
                  Console.Write("Конвертация в UTF-8.. ");
-                 filestoutf8.convert(options.DevelopmentFolderName);
+                 filestoutf8.export(options.DevelopmentFolderName);
                  Console.Write("Done");
                  Console.WriteLine();
               }
